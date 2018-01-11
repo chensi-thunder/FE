@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    .box {
+      width: 1000px;
+      height: 1000px;
+      border: 1px solid;
+      position: relative;
+    }
+    .content {
+      width: 100px;
+      height: 100px;
+      background-color: aquamarine;
+      position: absolute;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div class="box">
+    <div class="content">
+
+      </div>
+  </div>
+  <script>
+    let isMove = false
+    $('.content').addEventListener('mousedown', e => {
+      isMove = true
+    })
+
+    $('.box').addEventListener('mousemove', e => {
+      var content = $('.content')
+      if (isMove) {
+        content.setAttribute('style', `top: ${e.clientY}px; left: ${e.clientX}px;`)
+      }
+    })
+
+    $('.box').addEventListener('mouseup', e => {
+      isMove = false
+    })
+
+    function $ (selector) {
+      return document.querySelector(selector)
+    }
+  </script>
+</body>
+</html>
